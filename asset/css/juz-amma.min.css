@@ -1,0 +1,136 @@
+/* ── TOOL CSS (ilmjt-*) ── */
+#ilmjt-tool *,#ilmjt-tool *::before,#ilmjt-tool *::after{box-sizing:border-box;margin:0;padding:10px;}
+#ilmjt-tool{all:initial;display:block;font-family:-apple-system,BlinkMacSystemFont,'Inter',Roboto,sans-serif;color:#1a1a1a;box-sizing:border-box;width:100%;max-width:100%;}
+
+:root{
+  --jt-g1:#249749;
+  --jt-g2:#0c3808;
+  --jt-gold:#f4a020;
+  --jt-purple:#7c5cbf;
+  --jt-teal:#1a8c8c;
+  --jt-sky:#0ea5e9;
+  --jt-light:#eef8f1;
+  --jt-border:#d4edda;
+  --jt-radius:14px;
+  --jt-shadow:0 2px 12px rgba(12,56,8,.1);
+}
+
+/* ─ Tool Header ─ */
+.ilmjt-header{background:linear-gradient(135deg,var(--jt-g2) 0%,#1e6b30 60%,#2d9e52 100%);color:#fff;padding:28px 24px 24px;position:relative;overflow:hidden;width:100%}
+.ilmjt-header::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:rgba(255,255,255,.04);border-radius:50%;pointer-events:none}
+.ilmjt-header::after{content:'';position:absolute;bottom:-20px;left:-20px;width:120px;height:120px;background:rgba(255,255,255,.03);border-radius:50%;pointer-events:none}
+.ilmjt-header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;position:relative;z-index:1}
+.ilmjt-header-title{font-size:clamp(1.1rem,3vw,1.4rem);font-weight:800;color:#fff;margin-bottom:4px}
+.ilmjt-header-sub{font-size:0.82rem;color:#86efac;font-weight:500}
+.ilmjt-badge-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;position:relative;z-index:1}
+.ilmjt-hbadge{padding:4px 10px;border-radius:20px;font-size:0.72rem;font-weight:600;background:rgba(255,255,255,.12);color:#d4edda;border:1px solid rgba(255,255,255,.15)}
+.ilmjt-share-btn{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;padding:6px 14px;border-radius:20px;font-size:0.78rem;font-weight:600;cursor:pointer;transition:background .2s;touch-action:manipulation;flex-shrink:0}
+.ilmjt-share-btn:hover{background:rgba(255,255,255,.25)}
+
+/* ─ Controls Bar ─ */
+.ilmjt-controls{background:#fff;border:1px solid var(--jt-border);border-radius:var(--jt-radius);padding:16px;margin:0 0 0 0;display:flex;flex-direction:column;gap:12px;width:100%}
+.ilmjt-ctrl-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.ilmjt-ctrl-label{font-size:0.78rem;font-weight:700;color:var(--jt-g2);white-space:nowrap}
+.ilmjt-select{padding:7px 12px;border:1px solid var(--jt-border);border-radius:8px;font-size:0.83rem;color:var(--jt-g2);background:#fff;cursor:pointer;flex:1;min-width:140px;max-width:260px;outline:none}
+.ilmjt-select:focus{border-color:var(--jt-g1)}
+.ilmjt-font-btns{display:flex;gap:4px}
+.ilmjt-font-btn{width:32px;height:32px;border:1px solid var(--jt-border);border-radius:7px;background:#fff;cursor:pointer;font-weight:700;font-size:0.85rem;color:var(--jt-g2);transition:background .15s;touch-action:manipulation}
+.ilmjt-font-btn:hover{background:var(--jt-light)}
+
+/* ─ Surah Selector Grid ─ */
+.ilmjt-surah-section{margin:0;width:100%}
+.ilmjt-surah-label{font-size:0.83rem;font-weight:700;color:var(--jt-g2);padding:12px 16px 8px;background:#f8fdf9;border-bottom:1px solid var(--jt-border)}
+.ilmjt-surah-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px;padding:12px;background:#f8fdf9;max-height:280px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--jt-g1) #eee}
+.ilmjt-surah-btn{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#fff;border:1px solid var(--jt-border);border-radius:8px;cursor:pointer;text-align:left;transition:all .15s;touch-action:manipulation;width:100%}
+.ilmjt-surah-btn:hover{border-color:var(--jt-g1);background:var(--jt-light)}
+.ilmjt-surah-btn.active{border-color:var(--jt-g1);background:var(--jt-light);box-shadow:0 0 0 2px rgba(36,151,73,.15)}
+.ilmjt-surah-num{width:28px;height:28px;background:var(--jt-g2);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.67rem;font-weight:700;flex-shrink:0}
+.ilmjt-surah-btn.active .ilmjt-surah-num{background:var(--jt-g1)}
+.ilmjt-surah-info{flex:1;min-width:0}
+.ilmjt-surah-name{font-size:0.83rem;font-weight:600;color:var(--jt-g2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ilmjt-surah-meta{font-size:0.7rem;color:#6b7c70}
+
+/* ─ Now Playing Bar ─ */
+.ilmjt-npbar{background:linear-gradient(90deg,var(--jt-g2),#1e6b30);color:#fff;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.ilmjt-np-title{font-size:0.82rem;font-weight:600;color:#86efac}
+.ilmjt-np-ayat{font-size:0.78rem;color:#d4edda}
+.ilmjt-prog-wrap{width:100%;height:3px;background:rgba(255,255,255,.2);border-radius:3px;margin-top:4px;overflow:hidden}
+.ilmjt-prog-bar{height:100%;background:var(--jt-gold);border-radius:3px;transition:width .3s;width:0%}
+
+/* ─ Ayat Reader ─ */
+.ilmjt-reader{padding:16px;display:flex;flex-direction:column;gap:0;width:100%}
+.ilmjt-ayat-block{padding:14px 12px;border-bottom:1px solid #f0f5f1;transition:background .15s;border-radius:8px;margin-bottom:2px}
+.ilmjt-ayat-block:hover{background:#f8fdf9}
+.ilmjt-ayat-block.playing{background:linear-gradient(135deg,#eef8f1,#d4f0de);border:1px solid var(--jt-border);border-radius:8px}
+.ilmjt-ayat-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px}
+.ilmjt-ayat-num-badge{width:32px;height:32px;background:var(--jt-g2);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:700;flex-shrink:0}
+.ilmjt-ayat-block.playing .ilmjt-ayat-num-badge{background:var(--jt-g1)}
+.ilmjt-ayat-actions{display:flex;gap:5px;flex-wrap:wrap}
+.ilmjt-act-btn{padding:5px 10px;border-radius:7px;border:1px solid var(--jt-border);background:#fff;cursor:pointer;font-size:0.75rem;font-weight:600;color:var(--jt-g2);transition:all .15s;touch-action:manipulation;white-space:nowrap}
+.ilmjt-act-btn:hover{background:var(--jt-light);border-color:var(--jt-g1)}
+.ilmjt-act-btn.playing-btn{background:var(--jt-g1);color:#fff;border-color:var(--jt-g1)}
+.ilmjt-act-btn.bookmarked{background:#fff8e8;color:#92600a;border-color:var(--jt-gold)}
+.ilmjt-arabic{text-align:right;font-size:var(--jt-arab-size,28px);line-height:1.9;color:#0c3808;font-family:'Scheherazade New','Amiri',serif,sans-serif;direction:rtl;width:100%;margin:6px 0}
+.ilmjt-rumi{font-size:0.85rem;color:#4a6854;font-style:italic;margin:5px 0;line-height:1.7}
+.ilmjt-terjemahan{font-size:0.88rem;color:#1a2e1f;line-height:1.75;background:#f8fdf9;border-left:3px solid var(--jt-g1);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:5px}
+
+/* ─ Toolbar below header ─ */
+.ilmjt-toolbar{display:flex;align-items:center;gap:8px;padding:10px 16px;background:#fff;border-bottom:1px solid var(--jt-border);flex-wrap:wrap}
+.ilmjt-tb-btn{display:flex;align-items:center;gap:4px;padding:6px 12px;border-radius:8px;border:1px solid var(--jt-border);background:#fff;cursor:pointer;font-size:0.78rem;font-weight:600;color:var(--jt-g2);transition:all .15s;touch-action:manipulation}
+.ilmjt-tb-btn:hover{background:var(--jt-light);border-color:var(--jt-g1)}
+.ilmjt-tb-btn.active{background:var(--jt-g1);color:#fff;border-color:var(--jt-g1)}
+.ilmjt-auto-next-tog,.ilmjt-repeat-tog{padding:6px 12px;}
+
+/* ─ Playback Controls ─ */
+.ilmjt-playback{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 16px;background:#fff;border-bottom:1px solid var(--jt-border);flex-wrap:wrap}
+.ilmjt-pb-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--jt-border);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all .15s;touch-action:manipulation}
+.ilmjt-pb-btn:hover{background:var(--jt-light);border-color:var(--jt-g1)}
+.ilmjt-pb-play{width:52px;height:52px;background:var(--jt-g1);color:#fff;border:none;font-size:1.2rem;box-shadow:0 2px 10px rgba(36,151,73,.3)}
+.ilmjt-pb-play:hover{background:var(--jt-g2)}
+.ilmjt-pb-label{font-size:0.72rem;color:#5a6872;text-align:center;margin-top:2px}
+
+/* ─ Toast ─ */
+.ilmjt-toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(40px);background:var(--jt-g2);color:#fff;padding:10px 20px;border-radius:24px;font-size:0.83rem;font-weight:600;z-index:9999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;max-width:90vw}
+.ilmjt-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ─ Bookmark Panel ─ */
+.ilmjt-bm-panel{background:#fff8e8;border:1px solid #f7d070;border-radius:var(--jt-radius);padding:14px 16px;margin:0 16px 12px;display:none}
+.ilmjt-bm-panel.open{display:block}
+.ilmjt-bm-panel h4{font-size:0.85rem;font-weight:700;color:#7a4d00;margin-bottom:8px}
+.ilmjt-bm-list{display:flex;flex-wrap:wrap;gap:6px}
+.ilmjt-bm-tag{padding:4px 10px;background:#fff;border:1px solid #f7d070;border-radius:14px;font-size:0.76rem;color:#7a4d00;cursor:pointer;transition:background .15s}
+.ilmjt-bm-tag:hover{background:#fde8a8}
+.ilmjt-bm-empty{font-size:0.82rem;color:#9a7a4a;font-style:italic}
+
+/* ─ Basmalah ─ */
+.ilmjt-basmalah{text-align:center;font-size:clamp(20px,4vw,30px);color:var(--jt-g2);padding:16px 12px 8px;font-family:'Scheherazade New','Amiri',serif;direction:rtl;line-height:2}
+
+/* ─ Surah Info Header ─ */
+.ilmjt-surah-hdr{padding:12px 16px;background:linear-gradient(135deg,#f8fdf9,#eef8f1);border-bottom:1px solid var(--jt-border)}
+.ilmjt-surah-hdr-name{font-size:1.1rem;font-weight:800;color:var(--jt-g2)}
+.ilmjt-surah-hdr-meta{font-size:0.78rem;color:#5a6872;margin-top:3px}
+.ilmjt-surah-hdr-badges{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.ilmjt-shbadge{padding:3px 8px;border-radius:10px;font-size:0.7rem;font-weight:600}
+.ilmjt-shbadge-green{background:var(--jt-light);color:var(--jt-g2);border:1px solid var(--jt-border)}
+.ilmjt-shbadge-gold{background:#fff8e8;color:#92600a;border:1px solid #fde8a8}
+.ilmjt-shbadge-purple{background:#f3f0ff;color:#5b3fa0;border:1px solid #d5caff}
+
+/* ─ Outer wrapper ─ */
+.ilmjt-outer{background:#fff;border:1px solid var(--jt-border);border-radius:var(--jt-radius);overflow:hidden;box-shadow:var(--jt-shadow);width:100%;max-width:100%}
+
+/* ─ Responsive ─ */
+@media(max-width:580px){
+  .ilmjt-header{padding:20px 14px 18px}
+  .ilmjt-controls{padding:12px;}
+  .ilmjt-surah-grid{grid-template-columns:repeat(2,1fr);max-height:220px}
+  .ilmjt-reader{padding:10px}
+  .ilmjt-arabic{font-size:var(--jt-arab-mobile-size,24px) !important}
+  .ilmjt-toolbar{padding:8px 12px;}
+  .ilmjt-playback{padding:10px 12px;gap:8px}
+  .ilmjt-pb-play{width:46px;height:46px}
+}
+@media(max-width:400px){
+  .ilmjt-surah-grid{grid-template-columns:1fr 1fr}
+  .ilmjt-ayat-actions{gap:3px}
+  .ilmjt-act-btn{font-size:0.7rem;padding:4px 7px}
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/gh/ilmualam/juz-amma@main/asset/css/juz-amma.min.css?v=20260312-1.0" rel="stylesheet"/>
+    <title>Juz Amma Tester</title>
+</head>
+<body>
+
+<div id="ilmjt-tool" style="">
+<!-- Tool Header -->
+<div class="ilmjt-outer">
+<div class="ilmjt-header">
+  <div class="ilmjt-header-top">
+    <div>
+      <div class="ilmjt-header-title">🎵 Alat Baca Juz Amma Interaktif</div>
+      <div class="ilmjt-header-sub">37 Surah • Audio 7 Qari • Terjemahan Melayu • Bookmark</div>
+    </div>
+    <button class="ilmjt-share-btn" onclick="ilmjtShare()">📤 Share</button>
+  </div>
+  <div class="ilmjt-badge-row">
+    <span class="ilmjt-hbadge">📖 Juz 30</span>
+    <span class="ilmjt-hbadge">🎵 37 Surah</span>
+    <span class="ilmjt-hbadge">🌙 564 Ayat</span>
+    <span class="ilmjt-hbadge">🔖 Bookmark</span>
+    <span class="ilmjt-hbadge">🔁 Auto-Next</span>
+  </div>
+</div>
+
+<!-- Controls -->
+<div class="ilmjt-controls">
+  <div class="ilmjt-ctrl-row">
+    <span class="ilmjt-ctrl-label">🎤 Qari:</span>
+    <select class="ilmjt-select" id="ilmjt-qari" onchange="ilmjtSetQari(this.value)">
+      <option value="ar.alafasy">Mishary Rashid Alafasy</option>
+      <option value="ar.abdurrahmaansudais">Abdurrahman As-Sudais</option>
+      <option value="ar.husary">Mahmoud Khalil Al-Husary</option>
+      <option value="ar.minshawi">Mohamed Siddiq Al-Minshawi</option>
+      <option value="ar.ibrahimakhbar">Ibrahim Al-Akhdar</option>
+      <option value="ar.mahermuaiqly">Maher Al-Muaiqly</option>
+      <option value="ar.shuraim">Saud Al-Shuraim</option>
+    </select>
+    <span class="ilmjt-ctrl-label" style="margin-left:8px">🔤 Saiz:</span>
+    <div class="ilmjt-font-btns">
+      <button class="ilmjt-font-btn" onclick="ilmjtFont(-4)">A-</button>
+      <button class="ilmjt-font-btn" onclick="ilmjtFont(4)">A+</button>
+    </div>
+  </div>
+</div>
+
+<!-- Surah Selector -->
+<div class="ilmjt-surah-section">
+  <div class="ilmjt-surah-label">📋 Pilih Surah (Juz Amma - Surah 78 hingga 114)</div>
+  <div class="ilmjt-surah-grid" id="ilmjt-surah-grid"></div>
+</div>
+
+<!-- Toolbar -->
+<div class="ilmjt-toolbar">
+  <button class="ilmjt-tb-btn ilmjt-auto-next-tog" id="ilmjt-autonext-btn" onclick="ilmjtToggleAutoNext()">🔁 Auto-Next: <span id="ilmjt-an-status">OFF</span></button>
+  <button class="ilmjt-tb-btn ilmjt-repeat-tog" id="ilmjt-repeat-btn" onclick="ilmjtToggleRepeat()">🔂 Ulang: <span id="ilmjt-rp-status">OFF</span></button>
+  <button class="ilmjt-tb-btn" onclick="ilmjtToggleBM()">🔖 Bookmark (<span id="ilmjt-bm-count">0</span>)</button>
+</div>
+
+<!-- Bookmark Panel -->
+<div class="ilmjt-bm-panel" id="ilmjt-bm-panel">
+  <h4>🔖 Senarai Bookmark Anda</h4>
+  <div class="ilmjt-bm-list" id="ilmjt-bm-list">
+    <span class="ilmjt-bm-empty">Tiada bookmark lagi. Tekan ikon bookmark pada mana-mana ayat.</span>
+  </div>
+</div>
+
+<!-- Now Playing Bar -->
+<div class="ilmjt-npbar" id="ilmjt-npbar">
+  <div>
+    <div class="ilmjt-np-title" id="ilmjt-np-title">-</div>
+    <div class="ilmjt-np-ayat" id="ilmjt-np-ayat">Pilih Surah untuk Dengar</div>
+  </div>
+  <div style="flex:1;min-width:100px">
+    <div class="ilmjt-prog-wrap"><div class="ilmjt-prog-bar" id="ilmjt-prog"></div></div>
+  </div>
+</div>
+
+<!-- Playback Controls -->
+<div class="ilmjt-playback">
+  <button class="ilmjt-pb-btn" onclick="ilmjtPrev()" title="Ayat sebelum">⏮</button>
+  <button class="ilmjt-pb-btn ilmjt-pb-play" id="ilmjt-play-btn" onclick="ilmjtPlayPause()">▶</button>
+  <button class="ilmjt-pb-btn" onclick="ilmjtNext()" title="Ayat seterusnya">⏭</button>
+</div>
+
+<!-- Surah Info + Reader Area -->
+<div class="ilmjt-surah-hdr" id="ilmjt-surah-hdr" style="display:none">
+  <div class="ilmjt-surah-hdr-name" id="ilmjt-surah-hdr-name"></div>
+  <div class="ilmjt-surah-hdr-meta" id="ilmjt-surah-hdr-meta"></div>
+  <div class="ilmjt-surah-hdr-badges" id="ilmjt-surah-hdr-badges"></div>
+</div>
+
+<div class="ilmjt-basmalah" id="ilmjt-basmalah" style="display:none">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+
+<div class="ilmjt-reader" id="ilmjt-reader">
+  <div style="text-align:center;padding:40px 20px;color:#6b7c70;font-size:0.9rem">
+    <div style="font-size:2rem;margin-bottom:10px">📖</div>
+    <p>Pilih surah di atas untuk mula membaca</p>
+  </div>
+</div>
+
+</div>
+
+<div class="ilmjt-toast" id="ilmjt-toast"></div>
+<script src="https://cdn.jsdelivr.net/gh/ilmualam/juz-amma@main/asset/js/juz-amma.min.js?v=20260312-1.0" defer></script>
+</div>
+</body>
+</html>

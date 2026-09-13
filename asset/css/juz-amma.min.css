@@ -1,6 +1,6 @@
 /* ── TOOL CSS (ilmjt-*) ── */
-#ilmjt-tool *,#ilmjt-tool *::before,#ilmjt-tool *::after{box-sizing:border-box;margin:0;padding:10px;}
-#ilmjt-tool{all:initial;display:block;font-family:-apple-system,BlinkMacSystemFont,'Inter',Roboto,sans-serif;color:#1a1a1a;box-sizing:border-box;width:100%;max-width:100%;}
+#ilmjt-tool *,#ilmjt-tool *::before,#ilmjt-tool *::after{box-sizing:border-box;margin:0;padding:0;}
+#ilmjt-tool{all:initial;display:block;font-family:-apple-system,BlinkMacSystemFont,'Inter',Roboto,sans-serif;color:#1a1a1a;box-sizing:border-box;width:100%;max-width:100%;container-type:inline-size;container-name:ilmjt;}
 
 :root{
   --jt-g1:#249749;
@@ -118,8 +118,8 @@
 /* ─ Outer wrapper ─ */
 .ilmjt-outer{background:#fff;border:1px solid var(--jt-border);border-radius:var(--jt-radius);overflow:hidden;box-shadow:var(--jt-shadow);width:100%;max-width:100%}
 
-/* ─ Responsive ─ */
-@media(max-width:580px){
+/* ─ Responsive: sized to the tool's own wrapper width, not the viewport ─ */
+@container ilmjt (max-width:580px){
   .ilmjt-header{padding:20px 14px 18px}
   .ilmjt-controls{padding:12px;}
   .ilmjt-surah-grid{grid-template-columns:repeat(2,1fr);max-height:220px}
@@ -128,9 +128,38 @@
   .ilmjt-toolbar{padding:8px 12px;}
   .ilmjt-playback{padding:10px 12px;gap:8px}
   .ilmjt-pb-play{width:46px;height:46px}
+  .ilmjt-font-btn{width:28px;height:28px;font-size:0.75rem}
+  .ilmjt-prog-wrap{height:2px}
 }
-@media(max-width:400px){
+@container ilmjt (max-width:400px){
   .ilmjt-surah-grid{grid-template-columns:1fr 1fr}
   .ilmjt-ayat-actions{gap:3px}
   .ilmjt-act-btn{font-size:0.7rem;padding:4px 7px}
+  .ilmjt-npbar{padding:8px 12px}
+  .ilmjt-pb-btn{width:34px;height:34px;font-size:0.85rem}
+  .ilmjt-pb-play{width:42px;height:42px;font-size:1rem}
+}
+
+/* ─ Fallback for browsers without container query support ─ */
+@supports not (container-type: inline-size){
+  @media(max-width:580px){
+    .ilmjt-header{padding:20px 14px 18px}
+    .ilmjt-controls{padding:12px;}
+    .ilmjt-surah-grid{grid-template-columns:repeat(2,1fr);max-height:220px}
+    .ilmjt-reader{padding:10px}
+    .ilmjt-arabic{font-size:var(--jt-arab-mobile-size,24px) !important}
+    .ilmjt-toolbar{padding:8px 12px;}
+    .ilmjt-playback{padding:10px 12px;gap:8px}
+    .ilmjt-pb-play{width:46px;height:46px}
+    .ilmjt-font-btn{width:28px;height:28px;font-size:0.75rem}
+    .ilmjt-prog-wrap{height:2px}
+  }
+  @media(max-width:400px){
+    .ilmjt-surah-grid{grid-template-columns:1fr 1fr}
+    .ilmjt-ayat-actions{gap:3px}
+    .ilmjt-act-btn{font-size:0.7rem;padding:4px 7px}
+    .ilmjt-npbar{padding:8px 12px}
+    .ilmjt-pb-btn{width:34px;height:34px;font-size:0.85rem}
+    .ilmjt-pb-play{width:42px;height:42px;font-size:1rem}
+  }
 }

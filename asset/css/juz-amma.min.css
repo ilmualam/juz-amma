@@ -71,8 +71,8 @@
 .ilmjt-act-btn.playing-btn{background:var(--jt-g1);color:#fff;border-color:var(--jt-g1)}
 .ilmjt-act-btn.bookmarked{background:#fff8e8;color:#92600a;border-color:var(--jt-gold)}
 .ilmjt-arabic{text-align:right;font-size:var(--jt-arab-size,28px);line-height:1.9;color:#0c3808;font-family:'Scheherazade New','Amiri',serif,sans-serif;direction:rtl;width:100%;margin:6px 0}
-.ilmjt-rumi{font-size:0.85rem;color:#4a6854;font-style:italic;margin:5px 0;line-height:1.7}
-.ilmjt-terjemahan{font-size:0.88rem;color:#1a2e1f;line-height:1.75;background:#f8fdf9;border-left:3px solid var(--jt-g1);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:5px}
+.ilmjt-rumi{font-size:var(--jt-rumi-size,14px);color:#4a6854;font-style:italic;margin:5px 0;line-height:1.7}
+.ilmjt-terjemahan{font-size:var(--jt-terjemahan-size,14px);color:#1a2e1f;line-height:1.75;background:#f8fdf9;border-left:3px solid var(--jt-g1);padding:8px 12px;border-radius:0 6px 6px 0;margin-top:5px}
 
 /* ─ Toolbar below header ─ */
 .ilmjt-toolbar{display:flex;align-items:center;gap:8px;padding:10px 16px;background:#fff;border-bottom:1px solid var(--jt-border);flex-wrap:wrap}
